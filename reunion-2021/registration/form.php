@@ -38,7 +38,7 @@ try {
     <head>
         <title>Application Form- <?= ORGANIZATION_SHORT_NAME ?></title>
         <?php
-            Required::metaTags()->favicon()->teletalkCSS()->bootstrapGrid()->sweetModalCSS()->airDatePickerCSS();
+        Required::metaTags()->favicon()->teletalkCSS()->bootstrapGrid()->sweetModalCSS()->airDatePickerCSS();
         ?>
 
         <link href="<?= BASE_URL ?>/assets/js/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -50,6 +50,11 @@ try {
                 margin-bottom: 50px !important;
             }
 
+
+            form.classic label {
+                font-size: 12px;
+            }
+
             .btn {
                 background-color: #dcdcdc !important;
                 border: 2px solid #6b6b6b !important;
@@ -58,227 +63,186 @@ try {
                 padding-bottom: 2px;
             }
 
-            .previewMode {
-                /* border: none !important; */
-                border-color: white;
-                -webkit-user-select: none;
-                outline: none;
-                pointer-events: none;
-                padding: 0;
+            #left-first {
+                position: fixed;
+                width: 400px;
+                height: auto;
+                left: -50px;
+                top: 90px;
+                opacity: 0.3;
             }
 
-            label.changed::after {
-                color: white;
+            #right-first {
+                position: fixed;
+                width: 400px;
+                height: auto;
+                right: -50px;
+                bottom: 70px;
+                opacity: 0.3;
             }
 
-            .previewMode>select {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                text-indent: 1px;
-                text-overflow: '';
-            }
-
-            .sectionNavigation {
-                display: flex;
-                text-align: center;
-                justify-content: space-between;
-            }
-
-            .sectionNavigation .btn {
+            .edu-row {
                 display: flex;
             }
 
-            .sectionNavigation .goToPrevSection>img {
-                height: 20px;
-                margin-top: 2px;
-                margin-right: 7px;
+            .edu-row input {
+                margin-top: 0 !important;
             }
 
-            .sectionNavigation .goToNextSection>img {
-                height: 20px;
-                margin-top: 2px;
-                margin-left: 7px;
+            .edu-col-1 {
+                width: 20%;
             }
 
-            /* Left right position */
-            /* .sectionNavigation .goToPrevSection {
-                float: left;
+            .edu-col-2 {
+                width: 30%;
             }
 
-            .sectionNavigation .goToNextSection,
-            .sectionNavigation .form-submit-button
-            .sectionNavigation #showPreview{
-                float: right;
-            } */
-            /* Left right position */
+            .edu-col-3 {
+                width: 50%;
+            }
         </style>
 
     </head>
 
     <body>
-        <!-- <div id="version"></div> -->
         <div class="master-wrapper">
-            <header>
-                <?php
-                require_once(ROOT_DIRECTORY . '/inc/header.php');
-                echo prepareHeader(ORGANIZATION_FULL_NAME, $encSessionId);
-                ?>
-            </header>
             <main id="applicant-info">
+                <h2 class="text-center">Registration Form</h2>
 
-                <h2 class="text-center">Application Form</h2>
-                <h4 class="text-center">Written Examination (Higher Court)</h4>
-
-
+                <img id="left-first" src="../assets/images/2.png">
 
                 <div class="container">
-                    <form class="classic" id="application-form" action="written-exam-application-form_.php?u=<?= $encSessionId ?>" method="post" enctype="multipart/form-data">
+                    <form class="classic" style="max-width: 650px; margin:auto;" id="application-form" action="form_.php" method="post" enctype="multipart/form-data">
 
                         <!-- General info starts -->
-                        <section class="formSection box-shadow padding-all-25 margin-bottom-25">
-                            <p>Step 1 of 6</p>
-                            <h2>General Information</h2>
-                            <?php
-                           
-
-                         
-
-                           
-
-                            $fathersNameHtml =
-                                <<<HTML
-                                   
-                                HTML;
-
-                            $motherNameHtml =
-                                <<<HTML
-                                    
-                                HTML;
-
-                            $genderOptions =
-                                <<<HTML
-                                    
-                                HTML;
-
-                            $genderCombo = <<<HTML
-                                  
-                                HTML;
-                            ?>
-
-
+                        <section class="formSection">
                             <div class="row">
-                                <div class="col-lg-12 col-sm-12">
-                                <div class="field">
-                                        <label class="required">Name</label>
-                                        <input name="fullName" class="validate formControl upper-case" 
-                                            type="text" value=""
-                                            data-swift-title="Name"
-                                            data-swift-required="required"   
-                                            data-swift-maxlen="100" 
-                                            >
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Name (in Bangla)</label>
+                                        <input name="nameInBangla" class="validate formControl upper-case" type="text"  data-swift-required="required">
                                     </div>
                                 </div>
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Name (in English)</label>
+                                        <input name="nameInEnglish" class="validate formControl upper-case" type="text"   data-swift-required="required">
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!-- Father & mother starts -->
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12">
-                                <div class="field">
+                                    <div class="field">
                                         <label class="required">Father's Name</label>
-                                        <input name="fatherName" class="validate formControl upper-case" 
-                                            type="text" value="" 
-                                            data-swift-title="Father's Name"
-                                            data-swift-required="required"   
-                                            data-swift-maxlen="100"
-                                            >
+                                        <input name="fatherName" class="validate formControl upper-case" type="text"  data-swift-required="required">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
-                                <div class="field">
+                                    <div class="field">
                                         <label class="required">Mother's Name</label>
-                                        <input name="motherName" class="validate formControl upper-case" type="text" value=""
-                                            data-swift-title="Mother's name"
-                                            data-swift-required="required" 
-                                            data-swift-maxlength="100">
+                                        <input name="motherName" class="validate formControl upper-case" type="text"  data-swift-required="required">
                                     </div>
                                 </div>
                             </div>
-                            <!-- Father & mother ends -->
+
 
                             <div class="row">
-                                <div class="col-lg-4 col-sm-12">
-                                <div class="field">
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
                                         <label class="required">Gender</label>
-                                        <select name="gender" class="validate formControl" 
-                                            data-swift-title="Gender"
-                                            data-swift-required="required">
-                                            <option value=""></option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                        <select name="gender" class="validate formControl" data-swift-required="required">
+                                            <option value="select"></option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-12">
+                                <div class="col-lg-6 col-sm-12">
                                     <div class="field">
                                         <label class="required">Date of Birth</label>
-                                        <input name="dob" class="validate swiftDate formControl" data-swift-title="Date of Birth" data-swift-required="required" data-swift-datatype="date" type="text" autocomplete="off" value="">
+                                        <input name="dob" class="validate swiftDate formControl"  data-swift-required="required" data-swift-datatype="date" type="text" autocomplete="off">
                                     </div>
                                 </div>
-                               
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Contact Number</label>
+                                        <input name="contactNo" class="validate swiftInteger formControl" data-swift-required="required" data-swift-datatype="mobile" type="text" maxlen="11">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="">Email</label>
+                                        <input name="email" data-swift-required="optional" class="validate lower-case formControl" type="text" data-swift-datatype="email" data-swift-maxlen="40" data-swift-title="Email" value="" title="Email Address">
+                                    </div>
+                                </div>
                             </div>
 
-                        </section>
-                        <!-- General info ends -->
+                            <img id="right-first" src="../assets/images/1.png" alt="">
 
-                        <!-- Contact info starts -->
-                        <section class="formSection box-shadow padding-all-25 margin-bottom-25">
-                            <p>Step 2 of 6</p>
-                            <h2>Contact Information Details</h2>
-
-                            <!-- Contact number and email -->
-                            <article style="margin-bottom: 5px;">
-                                <div class="row">
-                                    <!-- contactNo -------->
-                                    <div class="col-lg-4 col-sm-12">
-                                        <div class="field">
-                                            <label class="required">Contact Number</label>
-                                            <input name="contactNo" class="validate swiftInteger formControl" data-swift-required="required" data-swift-datatype="mobile" data-swift-title="Contact Number" type="text" maxlen="11" value="<?php echo $isNewApplicant ? "" : $applicant->contactNo; ?>">
-                                        </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Occupation Details</label>
+                                        <textarea name="occupationDetails" class="validate formControl upper-case" data-swift-required="required"></textarea>
                                     </div>
-
-                                    <div class="col-lg-4 col-sm-12">
-                                        <div class="field">
-                                            <label class="required">Retype Contact Number</label>
-                                            <input name="reContactNo" class="validate swiftInteger formControl" data-swift-required="required" data-swift-datatype="mobile" data-swift-title="Retype Contact Number" type="text" maxlen="11" value="<?php echo $isNewApplicant ? "" : $applicant->contactNo; ?>">
-                                        </div>
-                                    </div>
-                                    <!-- contactNo -------->
-
-                                    <!--email -->
-                                    <div class="col-lg-4 col-sm-12">
-                                        <div class="field">
-                                            <label class="">Email</label>
-                                            <input name="email" data-swift-required="optional" class="validate lower-case formControl" type="text" data-swift-datatype="email" data-swift-maxlen="40" data-swift-title="Email" value="<?php echo $isNewApplicant ? "" : $applicant->email; ?>" title="Email Address">
-                                        </div>
-                                    </div>
-                                    <!--email -->
                                 </div>
-                            </article>
+                            </div>
 
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Admitted into class</label>
+                                        <select name="admissionClass" class="validate formControl upper-case" data-swift-required="required">
+                                            <option>select</option>
+                                            <?php
+                                                for ($i=1; $i < 11; $i++) { 
+                                            ?>
+                                                <option value="Class-<?=$i?>">Class-<?=$i?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Admission Year</label>
+                                        <input name="admissionYear" class="validate formControl swiftNumeric swiftYear" type="text" data-swift-required="required">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+                        <section class="formSection">
                             <!-- Present address starts -->
                             <article style="margin-bottom: 5px;">
-                                <h3>Present address</h3>
+                                <h5>Present address</h5>
                                 <div class="row">
-                                    <div class="col-lg-12 col-sm-12">
+                                    <div class="col-lg-9 col-sm-12">
                                         <div class="field">
                                             <label class="required">Village</label>
                                             <input type="text" name="presentVillage" class="validate formControl" data-swift-required="required" data-swift-maxlen="100" data-swift-title="Present Village">
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="field">
+                                            <label class="">Post Code</label>
+                                            <input name="presentGpo" class="validate swiftNumeric formControl" data-swift-required="optional" data-swift-exactLen="4" data-swift-title="Present Post Code" type="text" value="" maxlength="4">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-4 col-sm-12">
+                                    <div class="col-lg-6 col-sm-12">
                                         <article class="district">
                                             <label class="required">District</label>
                                             <select name="presentDist" data-districttype="present" class="presentDistrict validate formControl district-combo" data-swift-required="required" data-swift-title="Present District">
@@ -294,7 +258,7 @@ try {
                                         </article>
                                     </div>
 
-                                    <div class="col-lg-4 col-sm-12">
+                                    <div class="col-lg-6 col-sm-12">
                                         <article class="thana">
                                             <label class="required">Thana/Upazila</label>
                                             <select name="presentThana" id="presentThana" class="presentThana validate formControl" data-swift-required="required" data-swift-title="Present Thana/Upazila">
@@ -302,28 +266,32 @@ try {
                                             </select>
                                         </article>
                                     </div>
-
-                                    <div class="col-lg-4 col-sm-12">
-                                        <article class="">
-                                            <label class="">Post Code</label>
-                                            <input name="presentGpo" class="validate swiftInteger formControl" data-swift-required="optional" data-swift-exactLen="4" data-swift-title="Present Post Code" type="text" value="" maxlength="4">
-                                        </article>
-                                    </div>
                                 </div>
                             </article>
-                            <!-- Present address ends -->
 
                             <!-- Permanent address starts -->
                             <article style="margin-bottom: 5px;">
-                                <h3>Permanent address</h3>
+                                <h5>Permanent address</h5>
 
-                                <div class="field">
-                                    <label class="required">Detail Address</label>
-                                    <textarea name="permanentAddress" class="validate formControl" data-swift-required="required" data-swift-maxlength="100" data-swift-title="Permanent Address"></textarea>
+                                <div class="row">
+                                    <div class="col-lg-9 col-sm-12">
+                                        <div class="field">
+                                            <label class="required">Village</label>
+                                            <input type="text" name="permanentVillage" class="validate formControl" data-swift-required="required" data-swift-maxlength="100" data-swift-title="Permanent Village">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="field">
+                                            <label class="">Post Code</label>
+                                            <input name="permanentGpo" class="validate swiftInteger formControl" data-swift-required="optional" data-swift-exactLen="4" data-swift-title="Permanent Post Code" type="text" value="" maxlength="4">
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-4 col-sm-12">
+                                    <div class="col-lg-6 col-sm-12">
                                         <div class="field">
                                             <label class="required">District</label>
 
@@ -339,8 +307,7 @@ try {
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-4 col-sm-12">
+                                    <div class="col-lg-6 col-sm-12">
                                         <article class="">
                                             <label class="required">Thana/Upazila</label><img class="label-spinner hidden" src="../../../assets/images/spinner.svg">
                                             <select name="permanentThana" id="permanentThana" class="permanentThana validate formControl" data-swift-required="required" data-swift-title="Permanent Thana/Upazila">
@@ -350,43 +317,142 @@ try {
                                         </article>
                                     </div>
 
-                                    <div class="col-lg-4 col-sm-12">
-                                        <div class="field">
-                                            <label class="">Post Code</label>
-                                            <input name="permanentGpo" class="validate swiftInteger formControl" data-swift-required="optional" data-swift-exactLen="4" data-swift-title="Permanent Post Code" type="text" value="" maxlength="4">
-                                        </div>
-                                    </div>
+
                                 </div>
                             </article>
-                            <!-- Permanent address ends -->
+                        </section>
 
-                            <div class="sectionNavigation">
-                                <div class="goToPrevSection btn"><img src="<?= BASE_URL ?>/assets/images/prev-button.png">Previous</div>
-                                <div class="goToNextSection btn">Next <img src="<?= BASE_URL ?>/assets/images/next-button.png"></div>
+                        <section class="formSection">
+                            <h5>Educational Qualifications</h5>
+                            <div class="edu-row">
+                                <div class="edu-col-1">
+                                    <input type="text" value="Exam Name" readonly>
+                                </div>
+                                <div class="edu-col-2">
+                                    <input type="text" value="Passing Year" readonly>
+                                </div>
+                                <div class="edu-col-3">
+                                    <input type="text" value="Institute name" readonly>
+                                </div>
+                            </div>
+                            <div class="edu-row">
+                                <div class="edu-col-1">
+                                    <input type="text" value="S.S.C" readonly>
+                                </div>
+                                <div class="edu-col-2">
+                                    <input type="text" name="sscYear" class="swiftNumeric swiftYear">
+                                </div>
+                                <div class="edu-col-3">
+                                    <input type="text" name="sscInst">
+                                </div>
+                            </div>
+
+                            <div class="edu-row">
+                                <div class="edu-col-1">
+                                    <input type="text" value="H.S.C" readonly>
+                                </div>
+                                <div class="edu-col-2">
+                                    <input type="text" name="hscYear" class="swiftNumeric swiftYear">
+                                </div>
+                                <div class="edu-col-3">
+                                    <input type="text" name="hscInst">
+                                </div>
+                            </div>
+
+                            <div class="edu-row">
+                                <div class="edu-col-1">
+                                    <input type="text" value="Graduation" readonly>
+                                </div>
+                                <div class="edu-col-2">
+                                    <input type="text" name="gradYear" class="swiftNumeric swiftYear">
+                                </div>
+                                <div class="edu-col-3">
+                                    <input type="text" name="gradInst">
+                                </div>
+                            </div>
+
+                            <div class="edu-row">
+                                <div class="edu-col-1">
+                                    <input type="text" value="Masters" readonly>
+                                </div>
+                                <div class="edu-col-2">
+                                    <input type="text" name="mastersYear" class="swiftNumeric swiftYear">
+                                </div>
+                                <div class="edu-col-3">
+                                    <input type="text" name="mastersInst">
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            If not passed S.S.C, then fillup the following info-
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="">Dropout Class</label>
+                                        <select name="dropOutClass" class="validate formControl upper-case" data-swift-required="required">
+                                            <option>select</option>
+                                            <?php
+                                                for ($i=1; $i < 11; $i++) { 
+                                            ?>
+                                                <option value="Class-<?=$i?>">Class-<?=$i?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="">Dropout Year</label>
+                                        <input name="dropOutYear" class="validate formControl swiftNumeric swiftYear" type="text" value="" data-swift-required="required" data-swift-maxlen="100">
+                                    </div>
+                                </div>
                             </div>
                         </section>
-                        <!-- Contact info ends -->
 
-                      
+                        <section class="formSection">
+                            <h5>Registration Payment Details</h5>
+                        <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                <div class="field">
+                                        <label class="required">Registration Fee</label>
+                                        <input name="feeAmount" class="validate swiftInteger formControl" data-swift-required="required" type="text" maxlen="11">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Payment Date</label>
+                                        <input name="paymentDate" class="validate swiftDate formControl"  data-swift-required="required" data-swift-datatype="date" type="text" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Paid To (School bKash No.)</label>
+                                        <input name="schoolBkashNo" class="validate swiftInteger formControl" 
+                                                value="01914762300"
+                                        data-swift-required="required" data-swift-datatype="mobile" 
+                                        type="text" maxlen="11" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Paid From (your bKash No.)</label>
+                                        <input name="senderBkashNo" class="validate swiftInteger formControl" data-swift-required="required" data-swift-datatype="mobile" type="text" maxlen="11">
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </section>
 
-                     
-
-                      
-
-                        <section class="formSection box-shadow padding-all-25 margin-bottom-25" style="display: none;">
-                            <p>Step 6 of 6</p>
+                        <section class="formSection  padding-all-25 margin-bottom-25">
+                            
                             <!-- Photo upload starts -->
                             <?php
                             $photo_path = BASE_URL . "/assets/images/default-photo.jpg";
                             $signature_path = BASE_URL . "/assets/images/default-signature.jpg";
-                            // if ($isNewApplicant) {
-                            //     $photo_path = BASE_URL . "assets/images/default-photo.jpg";
-                            //     $signature_path = BASE_URL . "assets/images/default-signature.jpg";
-                            // } 
-                            // else {
-                            //     $photo_path = BASE_URL . 'applicant-images/photos/' . $applicant->invoiceCode . '.jpg';
-                            //     $signature_path = BASE_URL . '/applicant-images/signatures/' . $applicant->invoiceCode . '.jpg';
-                            // }
+                         
                             ?>
 
                             <div class="uploader field formControl">
@@ -403,39 +469,19 @@ try {
                                     </div>
                                 </div>
 
-                                <div style="border:0;">
-                                    <h2>Upload Signature</h2>
-                                    <div class="preview-and-instruction">
-                                        <div class="preview">
-                                            <img name="ApplicantSignature" id="ApplicantSignatureImage" src="<?php echo $signature_path; ?>" style="width:150px;">
-                                        </div>
-                                        <div class="instruction">
-                                            Photo dimension must be 300X80 pixels and size less than 100 kilobytes.
-                                        </div>
-                                    </div>
-                                    <div class="file-input">
-                                        <input type="file" title="Applicant's Signature" name="ApplicantSignature" id="ApplicantSignature" class="photo formControl" data-swift-required="required" data-swift-title="Applicant's Signature" accept="image/jpeg">
-                                    </div>
-                                </div>
+                              
                             </div>
                             <!-- Photo upload ends -->
 
-                            <article class="margin-bottom-25">
-                                <h2>Declaration</h2>
-                                <input type="checkbox" id="DeclarationApproval" class="formControl" style="margin-left: -1px; margin-right: 13px; margin-top: 5px;"> I declare that the information provided in this form is correct, true and complete to the best of my knowledge and belief. If any information is found false, incorrect and incomplete or if any ineligibility is detected before or after the examination, any action can be taken against me by the Commission.
-                            </article>
+                          
 
-                            <div class="sectionNavigation">
-                                <div class="goToPrevSection btn">Previous</div>
-                                <div class="btn" id="showPreview">Preview</div>
-                            </div>
+                          
 
 
                         </section>
 
-                        <div id="submitSection" style="display: none;">
-                            <div id="closePreview" class="btn">Back to form</div>
-                            <!-- Submit button is here -->
+                        <div id="submitSection">
+                           
                             <?php
                             if (ENVIRONMENT == "DEVELOPMENT") {
                                 $sumitButton =
@@ -458,18 +504,15 @@ try {
                 </div>
             </main>
             <footer>
-                <?php
-                Required::footer();
-                ?>
+               sdf
             </footer>
         </div>
 
         <script>
             var baseUrl = '<?php echo BASE_URL; ?>';
-           
         </script>
         <?php
-        Required::jquery()->hamburgerMenu()->sweetModalJS()->airDatePickerJS()->moment()->mobileValidator()->swiftSubmit()->swiftChanger()->swiftNumericInput();
+        Required::jquery()->sweetModalJS()->airDatePickerJS()->moment()->mobileValidator()->swiftSubmit()->swiftNumericInput();
         ?>
         <script src="<?= BASE_URL ?>/assets/js/plugins/jquery-ui/jquery-ui.min.js" ;></script>
         <script src="js/registration-form.js?v=<?= $dateTime->now()->asFormat("Y-m-d-H-i-s") ?>"></script>
