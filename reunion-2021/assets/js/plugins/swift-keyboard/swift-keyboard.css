@@ -1,0 +1,89 @@
+/*Needed CSS for bangla*/
+#banglaToolTip{
+	position:absolute;
+	display:block;
+	color:#FFF;
+	background:#00AEEF;
+	list-style:none;
+	padding:0;
+	z-index:22000;
+	width:auto;
+}
+#banglaToolTip li{
+	font-size:16px;
+	border-bottom:1px solid #FFF;
+	padding:7px 3px;
+	line-height:16px;
+}
+#banglaToolTip li.bangla_suggestion{
+	cursor: hand; cursor: pointer;
+	background-color:#c00;
+}
+#banglaToolTip li.bangla_suggestion b{
+	font-weight:normal;
+	text-decoration: underline;
+}
+#banglaToolTip li.bangla_suggestion:hover{
+	background:#00AEEF;
+}
+
+#banglaInpTool{
+	display:block;
+	height:30px;
+	overflow:hidden;
+	position:absolute;
+	color:#fff;
+	z-index:98;
+	width:400px;
+   
+}
+#banglaInpTool a{
+	display:block;
+	float:left;
+	color:black;
+	padding-top:3px;
+	padding-bottom: 3px;
+	/* height:27px;  height:25px; */
+	width:95px;   /*width:25px;*/
+	margin:2px;
+	cursor: pointer;
+	text-align: center;
+	background-color:#E8E8E8;
+	border:1px solid #fff;
+	font-size: 12px;
+	border-radius: 5px;
+     /*background-color:#ed8223;
+	color:#fff;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:18px;
+	line-height:30px;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border:0;
+	text-shadow:#C17C3A 0 -1px 0;
+	width:120px;
+	height:32px;*/
+}
+#banglaInpTool a.banglaBtnActive{
+	border:1px solid #000;
+}
+#banglaInpTool a.banglaBtnHover{
+	/*border:1px solid #000;*/
+}
+
+/* 
+#banglaInpTool a.English{
+	background:url(images/button-sprite.png) 0 0;
+}
+#banglaInpTool a.Unijoy{
+	background:url(images/button-sprite.png) 0 -26px;
+}
+#banglaInpTool a.Phonetic{
+	background:url(images/button-sprite.png) 0 -52px;
+} */
+
+
+#banglaInpTool a b{
+	/* display:none; */
+}

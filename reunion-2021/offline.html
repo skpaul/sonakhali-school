@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Offline</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Galada|Hind+Siliguri&display=swap" rel="stylesheet">
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            background-color: #ccc;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container div:first-child{
+            font-size: 70px;
+            margin-bottom: 30px;
+            font-family: 'Galada', cursive;
+            background-color: #565656;
+            color: transparent;
+            text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+        }
+        
+        .container div:nth-child(2){
+            font-size: 30px;
+            margin-bottom: 10px;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .container div:nth-child(3){
+            font-size: 30px;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        span{
+            background-color: rgb(135, 190, 111);
+            border-radius: 10px;
+            padding: 1px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+           <div>!! সাইটটি আপডেট করা হচ্ছে !!</div>
+           <div>সাময়িক অসুবিধার জন্য আমরা আন্তরিক ভাবে দুঃখিত।</div>
+           <!-- সকাল দুপুর বিকাল সন্ধ্যা রাত ভোর বেলা  মিনিটে টার পরে ১২৩৪৫৬৭৮৯০ -->
+           <div>অনুগ্রহ করে <span id="datetime"></span> এর সময় আবার চেষ্টা করুন।</div>
+    </div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        function is_online(){
+            $.ajax({
+                url: "is_offline.php",
+                type:"POST",
+                success: function(response){
+                   console.log(response);
+                    $response = $.parseJSON(response);
+                    if($response.redirect == true){
+                        window.location = "index.php";
+                    }
+                    else{
+                        $('#datetime').html($response.message);
+                    }
+                }
+            });
+        }
+
+       is_online();
+       
+     setInterval(is_online, 9000);
+    })
+</script>
+
+</body>
+</html>

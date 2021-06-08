@@ -1,0 +1,75 @@
+// sass --watch blog.scss blog.min.css
+// sass --watch a.scss:a.css --style compressed
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+@import 'modules/variables';
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    font-family: $font-family;
+}
+
+/* ---------------------------------------------------------------> */
+/* This section is requried to always keep the footer at the bottom */
+.master-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+.main, main {
+    flex: 1;
+}
+/* <--------------------------------------------------------------- */
+
+
+
+
+
+
+@import 'modules/media_queries';
+
+@import 'modules/typography';
+
+@import 'modules/header';
+@import 'modules/footer';
+@import 'modules/circular';
+
+@import 'modules/form/form-mini';
+@import 'modules/form/form-numbered';
+@import 'modules/form/form-classic';
+
+@import 'modules/form/buttons';
+
+@import 'modules/flex/flex-parent';
+@import 'modules/flex/flex-child';
+
+@import 'modules/print/nonresponsive-grid';
+@import 'modules/print/printable';
+
+@import 'modules/utilities/width';
+@import 'modules/utilities/margin';
+@import 'modules/utilities/padding';
+@import 'modules/utilities/offsets';
+@import 'modules/utilities/misc';
+@import 'modules/utilities/alert';
+@import 'modules/utilities/spinner';
+
+@import 'modules/pages/preview.php';
+
+
+
+

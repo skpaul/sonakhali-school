@@ -1,0 +1,45 @@
+
+
+@mixin flex-grow($grow:1) {
+    -ms-flex-positive: $grow;
+    -webkit-flex-grow: $grow;
+    flex-grow: $grow;
+}
+
+@mixin flex-shrink($shrink:1) {
+    -ms-flex-negative: $shrink;
+    -webkit-flex-shrink: $shrink;
+    flex-shrink: $shrink;
+}
+
+@mixin flex-basis($basis:auto) {
+    -ms-flex-preferred-size: $basis;
+    -webkit-flex-basis: $basis;
+    flex-basis: $basis;
+}
+
+.flex{
+    &>.grow{
+        @include flex-grow(1);
+    }
+
+    &>.shrink{
+        @include flex-shrink(1);
+    }
+
+    &>.half{
+        @include flex-basis(50%);
+    }
+
+    &>.third{
+        @include flex-basis(33.3333333%);
+    }
+
+    &>.fourth{
+        @include flex-basis(25%);
+    }
+
+    &>.fifth{
+        @include flex-basis(20%);
+    }
+}

@@ -1,0 +1,24 @@
+//Class-
+@for $i from 1 through 12 {
+    .width-#{$i} {
+        width: #{$i*8.333333333333333}#{"%"};
+      }
+}
+
+
+@include lg {  
+    @for $i from 1 through 12 {
+        .lg-width-#{$i} {
+            width: #{$i*8.333333333333333}#{"%"};
+        }
+    }
+}
+
+
+@include sm {  
+    @for $i from 1 through 12 {
+        .sm-width-#{$i} {
+            width: #{$i*8.333333333333333}#{"%"};
+        }
+    }
+}

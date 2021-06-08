@@ -1,0 +1,63 @@
+
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $heading-color;
+}
+
+h1, .h1{
+    font-weight: 900;
+    font-size: 2.5rem;
+}
+
+
+.h2, h2 {
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.h3, h3 {
+    font-size: 1.75rem;
+}
+
+.h4, h4 {
+    font-size: 1.5rem;
+}
+
+.h5, h5 {
+    font-size: 1.25rem;
+}
+
+.h6, h6 {
+    font-size: 1rem;
+}
+
+p{
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+    letter-spacing: 0.01745rem;
+}
+
+
+/* Makes text upper case*/
+.upper-case{
+    text-transform: uppercase;
+}
+
+/* Makes text lower case*/
+.lower-case{
+    text-transform: lowercase;
+}
+
+/*capitalizes the first letter of each word*/
+.capitalize{
+    text-transform: capitalize;
+}
+
+.text-center{
+    text-align: center;
+}

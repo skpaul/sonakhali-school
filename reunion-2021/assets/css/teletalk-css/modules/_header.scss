@@ -1,0 +1,120 @@
+header{
+    // background-color: #dde0e2 !important; 
+    margin-bottom: 28px; 
+    padding-top: 5px;
+    box-shadow: 0 4px 2px -2px gray;
+   
+    //for logo, govt, organization and hamberger menu
+    .top{
+        display: flex;
+        flex-direction: row;
+        .left{
+            margin-left: 6px;
+            flex-grow: 1;
+            @include lg{
+                margin-left: 20px;
+            }
+            .brand{
+                display: flex;
+                .logo-container{
+                    margin-right: 10px;
+                    .logo{
+                        height: 26px;
+                        width: auto;
+                        @include lg{
+                            height: 40px;
+                        }
+                    }
+                }
+
+                // name of the govt and orgranization
+                .govt-org{
+                    .govt{
+                        font-weight: 400;
+                        font-size: 9px;
+                        @include lg{
+                            font-weight: 400;
+                            font-size: 12px;
+                        }
+                    }
+                
+                    .organization{
+                        font-weight: 600;
+                        font-size: 13px;
+                        @include lg{
+                            font-weight: 900;
+                            font-size: 24px;
+                            color: #3d4e5e;
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        .right{
+            width: 54px;
+            display: block;
+            @include lg{
+                display: none;
+            }
+
+            .hamburger-icon-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+
+            img.hamburger{
+                width: 30px;
+            }
+        }
+    }
+
+    //for navigation
+    .bottom{
+        .nav-container{
+            display: none;
+
+            @media screen and (min-width: 992px) {
+                display: block;
+                margin-top: 10px;
+            }
+
+            .top-nav{
+                // background-color: green;
+                ul{
+                    list-style: none;
+                    margin-left: 50px;
+                    display: flex;
+                    flex-direction: column;
+                    // background-color: green;
+                    @media screen and (min-width: 992px) {
+                        flex-direction: row;
+                        margin-left: 72px;
+                        // background-color: green;
+                    }
+
+                    li{
+                        margin-bottom:10px;
+                        @media screen and (min-width: 992px) {
+                            margin-bottom:3px;
+                            margin-right: 20px;
+                        }
+
+                        a{
+                            font-size: 12px;
+                            color: #3d4e5e;
+                            cursor: pointer;
+                            text-decoration: none;
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
