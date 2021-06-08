@@ -18,12 +18,12 @@ $endecrytor = new EnDecryptor();
 $db = new ZeroSQL();
 
 $db->Server(DATABASE_SERVER)->Password(DATABASE_PASSWORD)->Database(DATABASE_NAME)->User(DATABASE_USER_NAME);
-$db->connect();
+// $db->connect();
 
 $dateTime = new SwiftDatetime();
 $now = $dateTime->now()->asYmdHis();
 
-$districts = $db->select("name")->from("districts")->orderBy("name")->toList();
+// $districts = $db->select("name")->from("districts")->orderBy("name")->toList();
 
 
 
