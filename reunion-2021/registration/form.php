@@ -36,7 +36,7 @@ try {
     <html>
 
     <head>
-        <title>Application Form- <?= ORGANIZATION_SHORT_NAME ?></title>
+        <title>Reunion-2021</title>
         <?php
         Required::metaTags()->favicon()->teletalkCSS()->bootstrapGrid()->sweetModalCSS()->airDatePickerCSS();
         ?>

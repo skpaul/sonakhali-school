@@ -1,1 +1,1 @@
-<link rel="icon" type="image/png" href="<?php echo BASE_URL ;?>/assets/images/govt-logo.png">
+<link rel="icon" type="image/png" href="<?php echo BASE_URL ;?>/assets/images/favicon.png">
