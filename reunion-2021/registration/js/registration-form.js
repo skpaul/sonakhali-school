@@ -118,7 +118,7 @@ $(function(){
       
 
         $.ajax({
-            url: baseUrl + '/court-higher/written/application-form/get-thanas.php?district=' + selectedDistrict,
+            url: baseUrl + '/registration/get-thanas.php?district=' + selectedDistrict,
             type: "GET",
             success:function(response){
                // console.log(response);

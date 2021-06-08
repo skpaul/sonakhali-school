@@ -84,7 +84,7 @@
             });
 
             set_exception_handler(function($exp){
-               
+               $errorDetails = $exp->getCode() . " " . $exp->getMessage()."". $exp->getFile()."". $exp->getLine();
                 $this->_createErrorLog($exp->getCode(), $exp->getMessage(), $exp->getFile(), $exp->getLine());
                 
                 // After header(...); you must use exit;
@@ -99,6 +99,7 @@
                     }
                 }
                 else{
+                    echo $errorDetails;
                     echo("Error occured. See the error log file for details");
                 }
             });
