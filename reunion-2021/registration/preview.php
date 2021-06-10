@@ -1,6 +1,6 @@
 <?php
 
-require_once("../../../Required.php");
+require_once("../Required.php");
 
 
 Required::SwiftLogger()
@@ -21,8 +21,7 @@ $logger = new SwiftLogger(ROOT_DIRECTORY, false);
 
 $applicantId = $endecrytor->decrypt($_GET["id"]);
 
-$applicant = $db->select()->from("hc_written_cinfo")->find($applicantId);
-$hEdu = $db->select()->from("hc_written_higher_educations")->where("applicantId")->equalTo($applicantId)->single();
+$applicant = $db->select()->from("registration")->find($applicantId);
 
 $datetime = new SwiftDatetime();
 $now = $datetime->now()->asYmdHis();
@@ -96,51 +95,28 @@ $now = $datetime->now()->asYmdHis();
 
                 <!-- applicant's biodata -->
                 <section>
-                    <div class="fixed-width">
-                    <div class="margin-bottom-10">
-                        <div class="grid">
-                            <div class="col-auto">
-                                <div class="field">
-                                    <label class="border-right">User ID</label>
-                                    <div class="text"><?= $applicant->userId ?></div>
+                <div class="grid border-bottom">
+                                <div class="col-6">
+                                    <div class="field">
+                                        <label class="border-right">Registration No.</label>
+                                        <div class="text"><?= $applicant->id ?></div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-auto">
+                                    <div class="field">
+                                        <label class="border-right border-left">Date</label>
+                                        <div class="text">
+                                            <?php
+                                                $appliedDatetime = $datetime->value($applicant->appliedDatetime)->asdmY();
+                                                echo $appliedDatetime;
+                                            ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-auto">
-                                <div class="field">
-                                    <label class="border-right border-left">Post Name</label>
-                                    <div class="text">Application for HC</div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="field">
-                                    <label class="border-right border-left">Reference</label>
-                                    <div class="text"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid border-bottom">
-                            <div class="col-auto">
-                                <div class="field">
-                                    <label class="border-right">Reg. No.</label>
-                                    <div class="text"><?= $applicant->regNo ?></div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="field">
-                                    <label class="border-right border-left">Reg. Year</label>
-                                    <div class="text"><?= $applicant->regYear ?></div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <!-- <div class="field">
-                                    <label class="border-right border-left"></label>
-                                    <div class="text"></div>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                    </div>
 
+<br>
                     <!-- .special-row is used to show applicant's photo on right side. -->
                     <div class="special-row">
                         <div>

@@ -491,7 +491,7 @@
                 $this->character_or_digit = "digits";
                 $valueToValidate = $this->valueToValidate;
 
-                if(isset($valueToValidate)){
+                if(isset($valueToValidate) && !empty($valueToValidate)){
                     $valueToValidate = str_replace(",","",$valueToValidate);
                     //it allows negative value, but not decimal value.
                     if(filter_var($valueToValidate, FILTER_VALIDATE_INT) === 0 || filter_var($valueToValidate, FILTER_VALIDATE_INT)){

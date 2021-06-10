@@ -18,12 +18,12 @@ $endecrytor = new EnDecryptor();
 $db = new ZeroSQL();
 
 $db->Server(DATABASE_SERVER)->Password(DATABASE_PASSWORD)->Database(DATABASE_NAME)->User(DATABASE_USER_NAME);
-// $db->connect();
+$db->connect();
 
 $dateTime = new SwiftDatetime();
 $now = $dateTime->now()->asYmdHis();
 
-// $districts = $db->select("name")->from("districts")->orderBy("name")->toList();
+$districts = $db->select("name")->from("districts")->orderBy("name")->toList();
 
 
 
@@ -112,22 +112,17 @@ try {
                 <img id="left-first" src="../assets/images/2.png">
 
                 <div class="container">
-                    <form class="classic" style="max-width: 650px; margin:auto;" id="application-form" action="form_.php" method="post" enctype="multipart/form-data">
+                    <form class="classic" style="max-width: 650px; margin:auto;" id="application-form" action="form-s.php" method="post" enctype="multipart/form-data">
 
                         <!-- General info starts -->
                         <section class="formSection">
                             <div class="row">
-                                <div class="col-lg-6 col-sm-12">
-                                    <div class="field">
-                                        <label class="required">Name (in Bangla)</label>
-                                        <input name="nameInBangla" class="validate formControl upper-case" type="text"  data-swift-required="required">
-                                    </div>
-                                </div>
+                                
 
                                 <div class="col-lg-6 col-sm-12">
                                     <div class="field">
-                                        <label class="required">Name (in English)</label>
-                                        <input name="nameInEnglish" class="validate formControl upper-case" type="text"   data-swift-required="required">
+                                        <label class="required">Name</label>
+                                        <input name="name" class="validate formControl upper-case" type="text"   data-swift-required="required">
                                     </div>
                                 </div>
 
@@ -155,7 +150,7 @@ try {
                                     <div class="field">
                                         <label class="required">Gender</label>
                                         <select name="gender" class="validate formControl" data-swift-required="required">
-                                            <option value="select"></option>
+                                            <option value=""></option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
@@ -390,8 +385,8 @@ try {
                                 <div class="col-lg-6 col-sm-12">
                                     <div class="field">
                                         <label class="">Dropout Class</label>
-                                        <select name="dropOutClass" class="validate formControl upper-case" data-swift-required="required">
-                                            <option>select</option>
+                                        <select name="dropOutClass" class="formControl upper-case" data-swift-required="required">
+                                            <option value="">select</option>
                                             <?php
                                                 for ($i=1; $i < 11; $i++) { 
                                             ?>
@@ -406,7 +401,7 @@ try {
                                 <div class="col-lg-6 col-sm-12">
                                     <div class="field">
                                         <label class="">Dropout Year</label>
-                                        <input name="dropOutYear" class="validate formControl swiftNumeric swiftYear" type="text" value="" data-swift-required="required" data-swift-maxlen="100">
+                                        <input name="dropOutYear" class="validate formControl swiftNumeric swiftYear" type="text" data-swift-required="optional" data-swift-datatype="integer" data-swift-maxlen="4">
                                     </div>
                                 </div>
                             </div>
@@ -417,8 +412,8 @@ try {
                         <div class="row">
                                 <div class="col-lg-6 col-sm-12">
                                 <div class="field">
-                                        <label class="required">Registration Fee</label>
-                                        <input name="feeAmount" class="validate swiftInteger formControl" data-swift-required="required" type="text" maxlen="11">
+                                        <label class="required">Registration Fee Amount</label>
+                                        <input name="feeAmount" class="validate swiftFloat formControl" data-swift-required="required" type="text" maxlen="4">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
