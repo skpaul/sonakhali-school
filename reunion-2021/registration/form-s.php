@@ -1,5 +1,5 @@
 <?php 
-    require_once("../Required.php");
+    require_once("../../Required.php");
 
     Required::SwiftLogger()
     ->SessionBase()
@@ -32,7 +32,7 @@
         $registration->dob = $datetime->value($dob)->asYmd();
         $registration->contactNo= $form->label("Contact No")->httpPost("contactNo")->required()->asMobile()->validate();
         $registration->email= $form->label("Email")->httpPost("email")->optional()->asEmail()->maxLength(50)->default(NULL)->validate();
-        $registration->occupationDetails= $form->label("Occupation Details")->httpPost("occupationDetails")->required()->asString(true)->maxLength(200)->validate();
+     
         $registration->admissionClass= $form->label("Admission Class")->httpPost("admissionClass")->required()->asString(true)->maxLength(10)->validate();
         $registration->admissionYear= $form->label("Admission Year")->httpPost("admissionYear")->required()->asInteger(false)->maxLength(4)->validate();
        
@@ -45,6 +45,12 @@
         $registration->permanentGpo= $form->label("Permanent GPO Post Code")->httpPost("permanentGpo")->asInteger(false)->maxLength(4)->default(NULL)->validate();
         $registration->permanentDist= $form->label("Permanent District")->httpPost("permanentDist")->required()->asString(true)->maxLength(50)->validate();
         $registration->permanentThana= $form->label("Permanent Thana")->httpPost("permanentThana")->required()->asString(true)->maxLength(50)->validate();
+       
+        $registration->occupation= $form->label("Occupation")->httpPost("occupation")->optional()->asString(true)->maxLength(20)->default(NULL)->validate();
+        $registration->orgName= $form->label("Organization Name")->httpPost("orgName")->optional()->asString(true)->maxLength(100)->default(NULL)->validate();
+        $registration->orgDist= $form->label("Organization District")->httpPost("orgDist")->optional()->asString(true)->maxLength(50)->default(NULL)->validate();
+        $registration->orgThana= $form->label("Organization Thana")->httpPost("orgThana")->optional()->asString(true)->maxLength(50)->default(NULL)->validate();
+
         $registration->sscYear= $form->label("S.S.C Year")->httpPost("sscYear")->asInteger(false)->maxLength(4)->default(NULL)->validate();
         $registration->sscInst= $form->label("S.S.C Institute")->httpPost("sscInst")->asString(true)->maxLength(100)->default(NULL)->validate();
         $registration->hscYear= $form->label("H.S.C Year")->httpPost("hscYear")->asInteger(false)->maxLength(4)->default(NULL)->validate();
@@ -63,13 +69,20 @@
         $registration->senderBkashNo= $form->label("Sender bKash No.")->httpPost("senderBkashNo")->required()->asMobile()->validate();
         $registration->appliedDatetime= $datetime->now()->asYmdHis();
        
+        $registration->password= $form->label("Password")->httpPost("password")->required()->asString(true)->maxLength(10)->validate();
+
+        $confirmPassword= $form->label("Confirm Password")->httpPost("confirmPassword")->required()->asString(true)->maxLength(10)->validate();
+
+        if($confirmPassword !== $registration->password)
+        throw new ValidableException("Password did not match");
 
     } catch (\ValidableException $ve) {
         // print_r($cinfo);
         $json = SwiftJSON::failure($ve->getMessage()); die($json);
     }
 
-
+//zahiskpo_sonakhali (user and db)
+//Sonakhali$2021@School
     //Photo and signature ------>
     try {
         ImageFile::validate("ApplicantPhoto", "Applicant Photo" ,300,300,100);
@@ -111,7 +124,7 @@
     }
 
     $encId = $endecrytor->encrypt($registration->id);
-    $url = BASE_URL . "/registration/preview.php?id=$encId" ;
+    $url = BASE_URL . "/reunion-2021/registration/preview.php?id=$encId" ;
 
     exit('{"issuccess":true, "redirecturl":"'. $url .'"}');
 ?>

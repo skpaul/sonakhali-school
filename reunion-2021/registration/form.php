@@ -1,5 +1,5 @@
 <?php
-require_once("../Required.php");
+require_once("../../Required.php");
 
 Required::SwiftLogger()
     ->SessionBase()
@@ -55,6 +55,10 @@ try {
                 font-size: 12px;
             }
 
+            input[type=text], select, textarea{
+                background-color: #c3c3c32e;
+            }
+
             .btn {
                 background-color: #dcdcdc !important;
                 border: 2px solid #6b6b6b !important;
@@ -106,10 +110,16 @@ try {
 
     <body>
         <div class="master-wrapper">
+        <header>
+                <?php
+                require_once(ROOT_DIRECTORY . '/inc/header.php');
+                echo prepareHeader(ORGANIZATION_FULL_NAME, "");
+                ?>
+            </header>
             <main id="applicant-info">
                 <h2 class="text-center">Registration Form</h2>
 
-                <img id="left-first" src="../assets/images/2.png">
+                <img id="left-first" src="<?=BASE_URL?>/assets/images/2.png">
 
                 <div class="container">
                     <form class="classic" style="max-width: 650px; margin:auto;" id="application-form" action="form-s.php" method="post" enctype="multipart/form-data">
@@ -119,7 +129,7 @@ try {
                             <div class="row">
                                 
 
-                                <div class="col-lg-6 col-sm-12">
+                                <div class="col-lg-12 col-sm-12">
                                     <div class="field">
                                         <label class="required">Name</label>
                                         <input name="name" class="validate formControl upper-case" type="text"   data-swift-required="required">
@@ -172,21 +182,12 @@ try {
                                 <div class="col-lg-6 col-sm-12">
                                     <div class="field">
                                         <label class="">Email</label>
-                                        <input name="email" data-swift-required="optional" class="validate lower-case formControl" type="text" data-swift-datatype="email" data-swift-maxlen="40" data-swift-title="Email" value="" title="Email Address">
+                                        <input name="email" data-swift-required="optional" class="validate lower-case formControl" type="text" data-swift-datatype="email" data-swift-maxlen="40">
                                     </div>
                                 </div>
                             </div>
 
-                            <img id="right-first" src="../assets/images/1.png" alt="">
-
-                            <div class="row">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="field">
-                                        <label class="required">Occupation Details</label>
-                                        <textarea name="occupationDetails" class="validate formControl upper-case" data-swift-required="required"></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                            <img id="right-first" src="<?=BASE_URL?>/assets/images/1.png" alt="">
 
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12">
@@ -215,7 +216,9 @@ try {
                         </section>
 
 
+                       
 
+                        <!-- Present and Permanent Address -->
                         <section class="formSection">
                             <!-- Present address starts -->
                             <article style="margin-bottom: 5px;">
@@ -316,9 +319,92 @@ try {
                                 </div>
                             </article>
                         </section>
+                        
+                         <!-- Occupation -->
+                         <section class="formSection">
+                            <article style="margin-bottom: 5px;">
+                                <h5>Occupation Details</h5>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-12">
+                                        <div class="field">
+                                            <label class="">Occupation</label>
+                                            <select name="occupation">
+                                                <option value=""></option>
+                                                <option value="Business">Business</option>
+                                                <option value="Job (Private)">Job (Private Org)</option>
+                                                <option value="Job (Govt.)">Job (Govt. Org)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-sm-12">
+                                        <div class="field">
+                                            <label class="">Organization Name</label>
+                                            <input type="text" name="orgName" class="validate formControl" data-swift-required="optional" data-swift-maxlen="100">
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-12">
+                                        <article class="district">
+                                            <label class="">District</label>
+                                            <select name="orgDist" data-districttype="occupation" class="occupationDistrict validate formControl district-combo" data-swift-required="optional" data-swift-title="Office District">
+                                                <option value="">select</option>
+                                                <?php
+                                                foreach ($districts as $district) {
+                                                ?>
+                                                    <option value="<?= $district->name ?>"><?= $district->name ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </article>
+                                    </div>
+
+                                    <div class="col-lg-6 col-sm-12">
+                                        <article class="thana">
+                                            <label class="required">Thana/Upazila</label>
+                                            <select name="orgThana" id="occupationThana" class="occupationThana validate formControl" data-swift-required="optional" data-swift-title="Office Thana/Upazila">
+
+                                            </select>
+                                        </article>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+
+
+                        <!-- Educational qualification -->
                         <section class="formSection">
                             <h5>Educational Qualifications</h5>
+
+                            If not passed S.S.C, then fillup the following info-
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="">Dropout Class</label>
+                                        <select name="dropOutClass" class="formControl upper-case" data-swift-required="required">
+                                            <option value="">select</option>
+                                            <?php
+                                                for ($i=1; $i < 11; $i++) { 
+                                            ?>
+                                                <option value="Class-<?=$i?>">Class-<?=$i?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="">Dropout Year</label>
+                                        <input name="dropOutYear" class="validate formControl swiftNumeric swiftYear" type="text" data-swift-required="optional" data-swift-datatype="integer" data-swift-maxlen="4">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
                             <div class="edu-row">
                                 <div class="edu-col-1">
                                     <input type="text" value="Exam Name" readonly>
@@ -378,38 +464,13 @@ try {
                                 </div>
                             </div>
 
-                            <br>
-                            <br>
-                            If not passed S.S.C, then fillup the following info-
-                            <div class="row">
-                                <div class="col-lg-6 col-sm-12">
-                                    <div class="field">
-                                        <label class="">Dropout Class</label>
-                                        <select name="dropOutClass" class="formControl upper-case" data-swift-required="required">
-                                            <option value="">select</option>
-                                            <?php
-                                                for ($i=1; $i < 11; $i++) { 
-                                            ?>
-                                                <option value="Class-<?=$i?>">Class-<?=$i?></option>
-                                            <?php
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-sm-12">
-                                    <div class="field">
-                                        <label class="">Dropout Year</label>
-                                        <input name="dropOutYear" class="validate formControl swiftNumeric swiftYear" type="text" data-swift-required="optional" data-swift-datatype="integer" data-swift-maxlen="4">
-                                    </div>
-                                </div>
-                            </div>
+                          
+                          
                         </section>
 
                         <section class="formSection">
                             <h5>Registration Payment Details</h5>
-                        <div class="row">
+                            <div class="row">
                                 <div class="col-lg-6 col-sm-12">
                                 <div class="field">
                                         <label class="required">Registration Fee Amount</label>
@@ -418,7 +479,7 @@ try {
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
                                     <div class="field">
-                                        <label class="required">Payment Date</label>
+                                        <label class="required">Date of Payment</label>
                                         <input name="paymentDate" class="validate swiftDate formControl"  data-swift-required="required" data-swift-datatype="date" type="text" autocomplete="off">
                                     </div>
                                 </div>
@@ -440,6 +501,49 @@ try {
                                
                             </div>
                         </section>
+
+
+
+
+                        <section class="formSection">
+                            <h5>Login info</h5>
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                <div class="field">
+                                        <label class="required">Password</label>
+                                        <input name="password" class="validate formControl" data-swift-required="required" type="password" maxlen="10">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="field">
+                                        <label class="required">Confirm Password</label>
+                                        <input name="confirmPassword" class="validate formControl"  data-swift-required="required" type="password" autocomplete="off">
+                                    </div>
+                                </div>
+                              
+                               
+                            </div>
+                        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <section class="formSection  padding-all-25 margin-bottom-25">
                             

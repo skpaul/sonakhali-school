@@ -120,7 +120,7 @@ $(function(){
       
 
         $.ajax({
-            url: baseUrl + '/registration/get-thanas.php?district=' + selectedDistrict,
+            url: baseUrl + '/reunion-2021/registration/get-thanas.php?district=' + selectedDistrict,
             type: "GET",
             success:function(response){
                // console.log(response);

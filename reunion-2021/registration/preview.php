@@ -1,6 +1,6 @@
 <?php
 
-require_once("../Required.php");
+require_once("../../Required.php");
 
 
 Required::SwiftLogger()
@@ -75,13 +75,13 @@ $now = $datetime->now()->asYmdHis();
                     <div class="header">
                         <div class="left">
                             <div class="brand" style="display: flex;">
-                                <div>
+                                <!-- <div>
                                     <img class="logo" src="<?= BASE_URL ?>/assets/images/govt-logo.png">
-                                </div>
+                                </div> -->
                                 <div class="govt-org">
                                     <div class="govt">
-                                        Government of the People's Republic of Bangladesh</div>
-                                    <div class="organization"><?= ORGANIZATION_FULL_NAME ?></div>
+                                    ESTD: 1935, P.O: Sonakhali, PS: Amtali, Dist: Barguna</div>
+                                    <div class="organization" style="font-size: 25px;"><?= ORGANIZATION_FULL_NAME ?></div>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ $now = $datetime->now()->asYmdHis();
                                 <div class="col-12 flex column">
                                     <div class="field border-bottom">
                                         <label class="border-right fixed-width">Name</label>
-                                        <div class="text"><?= $applicant->fullName; ?></div>
+                                        <div class="text"><?= $applicant->name; ?></div>
                                     </div>
 
                                     <div class="field border-bottom">
@@ -149,12 +149,12 @@ $now = $datetime->now()->asYmdHis();
 
                                     </div>
                                     <div class="field border-bottom">
-                                        <label class="border-right fixed-width">Nationality</label>
-                                        <div class="text">Bangladeshi</div>
+                                        <label class="border-right fixed-width">Contact No.</label>
+                                        <div class="text"><?= $applicant->contactNo ?></div>
                                     </div>
                                     <div class="field ">
-                                        <label class="border-right fixed-width">NID</label>
-                                        <div class="text"><?= $applicant->idNo ?></div>
+                                        <label class="border-right fixed-width">Email</label>
+                                        <div class="text"><?= $applicant->email ?></div>
                                     </div>
                                  
                                 </div>
@@ -171,27 +171,14 @@ $now = $datetime->now()->asYmdHis();
 
 
 
-                    <div class="grid">
-                        <div class="col-auto">
-                            <div class="field border-right">
-                                <label class="border-right fixed-width">Contact Number</label>
-                                <div class="text"><?= $applicant->contactNo ?></div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="field">
-                                <label class="border-right">Email</label>
-                                <div class="text"><?= $applicant->email ?></div>
-                            </div>
-                        </div>
-                    </div>
+                  
 
 
                     <div class="grid">
                         <div class="col-auto">
                             <div class="field">
-                                <label class="border-right fixed-width">Pupilage No</label>
-                                <div class="text"><?= $applicant->pupilageNo ?></div>
+                                <label class="border-right fixed-width">Admission Class</label>
+                                <div class="text"><?= $applicant->admissionClass ?></div>
                             </div>
                         </div>
                     </div>
@@ -199,210 +186,67 @@ $now = $datetime->now()->asYmdHis();
                     <div class="grid">
                         <div class="col-auto">
                             <div class="field">
-                                <label class="border-right fixed-width">Pupilage Of</label>
-                                <div class="text"><?= $applicant->pupilageOf ?></div>
+                                <label class="border-right fixed-width">Admission Year</label>
+                                <div class="text"><?= $applicant->admissionYear ?></div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="grid">
-                        <div class="col-auto">
-                            <div class="field">
-                                <label class="border-right fixed-width">Bar Assosiation Name</label>
-                                <div class="text"><?= $applicant->barAssosiationName ?></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid">
-                        <div class="col-auto">
-                            <div class="field">
-                                <label class="border-right fixed-width">Senior Advocate Name</label>
-                                <div class="text"><?= $applicant->seniorAdvocateName ?></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- is engaged -->
-                    <?php
-                    if ($applicant->isEngaged) {
-                        $engagement = <<<HTML
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Nature of Engagement</label>
-                                            <div class="text">$applicant->natureOfEngagement</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Place of Engagement</label>
-                                            <div class="text">$applicant->placeOfEngagement</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            HTML;
-                    } else {
-                        $engagement = <<<HTML
-                            <div class="grid">
-                                <div class="col-auto">
-                                    <div class="field">
-                                        <label class="border-right fixed-width">Engagement</label>
-                                        <div class="text">No</div>
-                                    </div>
-                                </div>
-                            </div>
-                        HTML;
-                    }
-                    echo $engagement;
-                    ?>
-
-                    <!-- is insolvent -->
-                    <?php
-                    $isDeclaredInsolvent = $applicant->isDeclaredInsolvent ? "Yes" : "No";
-                    $html =
-                        <<<HTML
-                            <div class="grid">
-                                <div class="col-auto">
-                                    <div class="field">
-                                        <label class="border-right fixed-width">Declared Insolvent</label>
-                                        <div class="text">$isDeclaredInsolvent</div>
-                                    </div>
-                                </div>
-                            </div>
-                        HTML;
-                    echo $html;
-                    //Dismissal -->
-                    if ($applicant->isDismissed) {
-                        $dismissalDate = $datetime->value($applicant->dismissalDate)->asdmY();
-                        $dismissal = <<<HTML
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Is Dismissed ?</label>
-                                            <div class="text">Yes</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right border-left fixed-width">Dismissal Date</label>
-                                            <div class="text">$dismissalDate</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Dismissal Reason</label>
-                                            <div class="text">$applicant->dismissalReason</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            HTML;
-                    } else {
-                        $dismissal =
-                            <<<HTML
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Is Dismissed ?</label>
-                                            <div class="text">No</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            HTML;
-                    }
-                    echo $dismissal;
-                    //Dismissal ends
-
-                    if ($applicant->isConvicted) {
-                        $convictionDate = $datetime->value($applicant->convictionDate)->asdmY();
-                        $convictionHtml =
-                            <<<HTML
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Is Convicted?</label>
-                                            <div class="text">Yes</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right border-left fixed-width">Conviction Date</label>
-                                            <div class="text">$convictionDate</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Conviction Particulars</label>
-                                            <div class="text">$applicant->convictionParticulars</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            HTML;
-                    } else {
-                        $convictionHtml =
-                            <<<HTML
-                                <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Is Convicted?</label>
-                                            <div class="text">No</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            HTML;
-                    }
-
-                    echo $convictionHtml;
-
-                    //is cancelled by bar --->
-                    $isCancelledByBar = $applicant->isCancelledByBar ? "Yes" : "No";
-                    $cancelHtml =
-                        <<<HTML
-                              <div class="grid">
-                                    <div class="col-auto">
-                                        <div class="field">
-                                            <label class="border-right fixed-width">Is Cancelled by Bar?</label>
-                                            <div class="text">$isCancelledByBar</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            HTML;
-                    echo $cancelHtml;
-                    //is cancelled by bar ends
-                    ?>
-
 
 
                     <!-- Permanent & Present Address -->
                     <div class="grid">
                         <div class="col-auto">
-                            <div class="field vertical ">
-                                <label class="border-bottom border-right">Present Address</label>
+                            <div class="field ">
+                                <label class="border-right  fixed-width">Present Address</label>
                                 <div class="text">
-                                    <b>Address Details: </b> <?php echo strtoupper($applicant->presentAddress); ?> <br>
-                                    <b>Thana: </b><?php echo strtoupper($applicant->presentThana); ?> <br>
-                                    <b>District: </b><?php echo strtoupper($applicant->presentDist); ?> <br>
+                                    <b>Village: </b> <?php echo strtoupper($applicant->presentVillage); ?> 
+                                    <b>Thana: </b><?php echo strtoupper($applicant->presentThana); ?> 
+                                    <b>District: </b><?php echo strtoupper($applicant->presentDist); ?>
                                     <b>Post Code: </b><?php echo strtoupper($applicant->presentGpo); ?>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="grid">
                         <div class="col-auto">
-                            <div class="field vertical">
-                                <label class="border-bottom">Permanent Address</label>
+                            <div class="field ">
+                                <label class="border-right fixed-width">Permanent Address</label>
                                 <div class="text">
-                                    <b>Address Details: </b><?php echo strtoupper($applicant->permanentAddress); ?> <br>
-                                    <b>Thana: </b><?php echo strtoupper($applicant->permanentThana); ?><br>
-                                    <b>District: </b><?php echo strtoupper($applicant->permanentDist); ?> <br>
+                                    <b>Village: </b> <?php echo strtoupper($applicant->permanentVillage); ?> 
+                                    <b>Thana: </b><?php echo strtoupper($applicant->permanentThana); ?> 
+                                    <b>District: </b><?php echo strtoupper($applicant->permanentDist); ?>
                                     <b>Post Code: </b><?php echo strtoupper($applicant->permanentGpo); ?>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="col-auto">
+                            <div class="field ">
+                                <label class="border-right  fixed-width">Occupation</label>
+                                <div class="text">
+                                    <b>Occupation: </b> <?php echo strtoupper($applicant->occupation); ?> 
+                                    <b>Organization: </b><?php echo strtoupper($applicant->orgName); ?> 
+                                    <b>District: </b><?php echo strtoupper($applicant->orgDist); ?>
+                                    <b>Thana: </b><?php echo strtoupper($applicant->orgThana); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="col-auto">
+                            <div class="field border-right">
+                                <label class="border-right fixed-width">Dropout Class</label>
+                                <div class="text"><?= $applicant->dropOutClass ?></div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="field">
+                                <label class="border-right">Drouout Year</label>
+                                <div class="text"><?= $applicant->dropOutYear ?></div>
                             </div>
                         </div>
                     </div>
@@ -417,160 +261,29 @@ $now = $datetime->now()->asYmdHis();
                                         <th>Examination/Degree</th>
                                         <th>Year</th>
                                         <th>Board/University/Institute</th>
-                                        <th>Division/Class/Grade/CGPA</th>
-                                        <th>Major Subject/Group</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><?php echo $applicant->sscExamName; ?></td>
+                                        <td>S.S.C</td>
                                         <td><?php echo $applicant->sscYear; ?></td>
-                                        <td><?php echo strtoupper($applicant->sscBoard); ?></td>
-                                        <td><?php echo $applicant->sscGpa . " " . $applicant->sscGrade . "" . $applicant->sscDivision; ?></td>
-                                        <td><?php echo strtoupper($applicant->sscGroup); ?></td>
+                                        <td><?php echo strtoupper($applicant->sscInst); ?></td>
                                     </tr>
-
                                     <tr>
-                                        <td><?php echo $applicant->hscExamName; ?></td>
+                                        <td>H.S.C</td>
                                         <td><?php echo $applicant->hscYear; ?></td>
-                                        <td><?php echo strtoupper($applicant->hscBoard); ?></td>
-                                        <td><?php echo $applicant->hscGpa . " " . $applicant->hscGrade . "" . $applicant->hscDivision; ?></td>
-                                        <td><?php echo strtoupper($applicant->hscGroup); ?></td>
+                                        <td><?php echo strtoupper($applicant->hscInst); ?></td>
                                     </tr>
-
-                                    <?php
-
-                                    //LL.B (Hons/Pass) -->
-                                    $examName = $hEdu->llbExam;
-                                    $llbResultType = $hEdu->llbResultType;
-                                    $result = "";
-                                    switch (strtolower($llbResultType)) {
-                                        case "appeared":
-                                            $llbExamConcludedDate = $datetime->value($hEdu->llbExamConcludedDate)->asdmY();
-                                            $passingYear  = "Appeared. Concluded date - " . $llbExamConcludedDate;
-                                            $result = "Appeared";
-                                            break;
-                                        case "division":
-                                            $passingYear = $hEdu->llbPassingYear;
-                                            $result = $hEdu->llbDivision
-                                                . ". Obtained Marks-" . $hEdu->llbMarksPercentage . "%";
-                                            break;
-                                        case "class":
-                                            $passingYear = $hEdu->llbPassingYear;
-                                            $result = $hEdu->llbClass
-                                                . ". Obtained Marks-" . $hEdu->llbMarksPercentage . "%";
-                                            break;
-                                        case "grading":
-                                            $passingYear = $hEdu->llbPassingYear;
-                                            $result = $hEdu->llbCgpa
-                                                . " out of " . $hEdu->llbCgpaScale;
-                                            break;
-                                    }
-
-                                    $course_duration = $hEdu->llbCourseDuration . " Years";
-
-                                    $University = $hEdu->llbUni;
-
-                                    $llbDetails = '<tr>
-                                                            <td>' .  $examName . '</td>
-                                                            <td>' . $passingYear . '</td>
-                                                            <td>' . strtoupper($University) . '</td>
-                                                            <td>' . $result . '</td>
-                                                            <td>-</td>
-                                                        </tr>';
-                                    echo $llbDetails;
-                                    //LL.B (Hons/Pass) ends.
-
-                                    //Graduation (Others)
-                                    if ($hEdu->hasOtherGrad) {
-                                        $examName = $hEdu->gradOtherExam;
-                                        $gradOtherResultType = $hEdu->gradOtherResultType;
-                                        $result = "";
-                                        switch (strtolower($gradOtherResultType)) {
-                                            case "appeared":
-                                                $gradOtherExamConcludedDate = $datetime->value($hEdu->gradOtherExamConcludedDate)->asdmY();
-                                                $passingYear  = "Appeared. Concluded date - " . $gradOtherExamConcludedDate;
-                                                $result = "Appeared";
-                                                break;
-                                            case "division":
-                                                $passingYear = $hEdu->gradOtherPassingYear;
-                                                $result = $hEdu->gradOtherDivision
-                                                    . ". Obtained Marks-" . $hEdu->gradOtherMarksPercentage . "%";
-                                                break;
-                                            case "class":
-                                                $passingYear = $hEdu->gradOtherPassingYear;
-                                                $result = $hEdu->gradOtherClass
-                                                    . ". Obtained Marks-" . $hEdu->gradOtherMarksPercentage . "%";
-                                                break;
-                                            case "grading":
-                                                $passingYear = $hEdu->gradOtherPassingYear;
-                                                $result = $hEdu->gradOtherCgpa
-                                                    . " out of " . $hEdu->gradOtherCgpaScale;
-                                                break;
-                                        }
-
-                                        $course_duration = $hEdu->gradOtherCourseDuration . " Years";
-
-                                        $University = $hEdu->gradOtherUni;
-
-                                        $gradOtherDetails = '<tr>
-                                                                    <td>' .  $examName . '</td>
-                                                                    <td>' . $passingYear . '</td>
-                                                                    <td>' . strtoupper($University) . '</td>
-                                                                    <td>' . $result . '</td>
-                                                                    <td>-</td>
-                                                                </tr>';
-                                        echo $gradOtherDetails;
-                                    }
-                                    //Graduation (Others) ends
-
-
-
-
-                                    //Masters
-                                    if ($hEdu->hasMasters) {
-                                        $examName = $hEdu->mastersExam;
-                                        $mastersResultType = $hEdu->mastersResultType;
-                                        $result = "";
-                                        switch (strtolower($mastersResultType)) {
-                                            case "appeared":
-                                                $mastersExamConcludedDate = $datetime->value($hEdu->mastersExamConcludedDate)->asdmY();
-                                                $passingYear  = "Appeared. Concluded date - " . $mastersExamConcludedDate;
-                                                $result = "Appeared";
-                                                break;
-                                            case "division":
-                                                $passingYear = $hEdu->mastersPassingYear;
-                                                $result = $hEdu->mastersDivision
-                                                    . ". Obtained Marks-" . $hEdu->mastersMarksPercentage . "%";
-                                                break;
-                                            case "class":
-                                                $passingYear = $hEdu->mastersPassingYear;
-                                                $result = $hEdu->mastersClass
-                                                    . ". Obtained Marks-" . $hEdu->mastersMarksPercentage . "%";
-                                                break;
-                                            case "grading":
-                                                $passingYear = $hEdu->mastersPassingYear;
-                                                $result = $hEdu->mastersCgpa
-                                                    . " out of " . $hEdu->mastersCgpaScale;
-                                                break;
-                                        }
-
-                                        $course_duration = $hEdu->mastersCourseDuration . " Years";
-
-                                        $University = $hEdu->mastersUni;
-
-                                        $mastersDetails = '<tr>
-                                                                    <td>' .  $examName . '</td>
-                                                                    <td>' . $passingYear . '</td>
-                                                                    <td>' . strtoupper($University) . '</td>
-                                                                    <td>' . $result . '</td>
-                                                                    <td>-</td>
-                                                                </tr>';
-                                        echo $mastersDetails;
-                                    }
-                                    //Masters ends
-                                    ?>
-
+                                    <tr>
+                                        <td>Graduation</td>
+                                        <td><?php echo $applicant->gradYear; ?></td>
+                                        <td><?php echo strtoupper($applicant->gradInst); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Post Graduation</td>
+                                        <td><?php echo $applicant->mastersYear; ?></td>
+                                        <td><?php echo strtoupper($applicant->mastersInst); ?></td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <!-- ===================================== -->
@@ -582,66 +295,44 @@ $now = $datetime->now()->asYmdHis();
                     <div class="grid">
                         <div class="col-auto">
                             <div class="field">
-                                <label class="border-right fixed-width">Bank Name</label>
-                                <div class="text"><?= $applicant->bankName ?></div>
+                                <label class="border-right fixed-width">Fee Amount</label>
+                                <div class="text"><?= $applicant->feeAmount ?></div>
                             </div>
                         </div>
                         <div class="col-auto">
                             <div class="field">
-                                <label class="border-right border-left fixed-width">Branch Name</label>
-                                <div class="text"><?= $applicant->branchName ?></div>
+                                <label class="border-right border-left fixed-width">Date of Payment</label>
+                                <div class="text"><?= $datetime->value($applicant->paymentDate)->asdmY() ?></div>
                             </div>
                         </div>
                     </div>
-                    <div class="grid">
+                    <div class="grid border-bottom">
                         <div class="col-auto">
                             <div class="field">
-                                <label class="border-right fixed-width">Fee?</label>
-                                <div class="text"><?= $applicant->fee == 1 ? "Yes" : "No" ?></div>
+                                <label class="border-right fixed-width">School bKash No.</label>
+                                <div class="text"><?= $applicant->schoolBkashNo?></div>
                             </div>
                         </div>
                         <div class="col-auto">
                             <div class="field">
-                                <label class="border-right border-left fixed-width">Draft/Slip No.</label>
-                                <div class="text"><?= $applicant->draftOrSlipNo ?></div>
+                                <label class="border-right border-left fixed-width">Sender bKash No.</label>
+                                <div class="text"><?= $applicant->senderBkashNo ?></div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-                    <div class="grid">
-                        <div class="col-auto">
-                            <div class="field border-bottom">
-                                <label class="border-right">Declaration</label>
-                                <div class="text">
-                                    I declare that the information provided in this form is correct, true and complete to the best of my knowledge and belief. If any information is found false, incorrect and incomplete or if any ineligibility is detected before or after the examination, any action can be taken against me by the Commission.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="signature">
-                        <?php
-                        $photoPath = BASE_URL . "/applicant-images/signatures/" . $applicant->userId . ".jpg";
-                        ?>
-                        <img src="<?= $photoPath ?>">
-                    </div>
+                    <br>                   
                 </section>
 
                 <section>
                     <footer>
-
                         <div class="copyright">
                             ©<?php echo date("Y"); ?>, <?= ORGANIZATION_FULL_NAME ?>, All Rights Reserved.
                         </div>
 
                         <div class="powered-by">
-                            Powered By:
-                            <a href="http://www.teletalk.com.bd/" target="_blank">
-                                <img class="logo" alt="teletalk Logo" title="Powered By: Teletalk" src="<?= BASE_URL ?>/assets/images/teletalk-logo.png">
+                            Dev Team:
+                            <a href="https://winbip.com/" target="_blank">
+                                <img class="logo" alt="Winbip Logo" title="Powered By: Winbip" src="<?= BASE_URL ?>/assets/images/winbip-logo.png">
                             </a>
                         </div>
                     </footer>
