@@ -35,6 +35,15 @@ $now = $datetime->now()->asYmdHis();
 
 <head>
     <title>Preivew Application- <?= ORGANIZATION_FULL_NAME ?></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PHR09TLL18"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PHR09TLL18');
+</script>
     <?php
     Required::metaTags()->favicon()->teletalkCSS();
     ?>

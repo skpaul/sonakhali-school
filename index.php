@@ -23,6 +23,16 @@ $year = date("Y");
 
     <head>
         <title>Home - <?=ORGANIZATION_FULL_NAME?></title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PHR09TLL18"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PHR09TLL18');
+</script>
+
         <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->

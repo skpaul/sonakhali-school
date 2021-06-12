@@ -36,6 +36,17 @@ try {
 
     <head>
         <title>Reunion-2021</title>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PHR09TLL18"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PHR09TLL18');
+</script>
+
         <?php
         Required::metaTags()->favicon()->teletalkCSS()->bootstrapGrid()->sweetModalCSS()->airDatePickerCSS();
         ?>
@@ -147,7 +158,9 @@ try {
                 </div>
             </main>
             <footer>
-                sdf
+            <?php
+            Required::footer();
+            ?>
             </footer>
         </div>
 

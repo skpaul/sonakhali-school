@@ -39,7 +39,7 @@
                                     <img class="logo" src="$logoSrc" alt="Bangladesh Govt. Logo">
                                 </div> -->
                                 <div class="govt-org">
-                                    <div class="organization" style="font-size: 25px;">$organizationFullName</div>
+                                    <div class="organization">$organizationFullName</div>
                                     <div class="govt">ESTD: 1935, P.O: Sonakhali, PS: Amtali, Dist: Barguna</div>
                                 </div>
                             </div>         
