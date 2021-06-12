@@ -36,7 +36,7 @@ try {
     <html>
 
     <head>
-        <title>Reunion-2021</title>
+        <title>Registration - Reunion-2021</title>
         <?php
         Required::metaTags()->favicon()->teletalkCSS()->bootstrapGrid()->sweetModalCSS()->airDatePickerCSS();
         ?>
@@ -67,23 +67,7 @@ try {
                 padding-bottom: 2px;
             }
 
-            #left-first {
-                position: fixed;
-                width: 400px;
-                height: auto;
-                left: -50px;
-                top: 90px;
-                opacity: 0.3;
-            }
-
-            #right-first {
-                position: fixed;
-                width: 400px;
-                height: auto;
-                right: -50px;
-                bottom: 70px;
-                opacity: 0.3;
-            }
+         
 
             .edu-row {
                 display: flex;
@@ -119,7 +103,7 @@ try {
             <main id="applicant-info">
                 <h2 class="text-center">Registration Form</h2>
 
-                <img id="left-first" src="<?=BASE_URL?>/assets/images/2.png">
+                
 
                 <div class="container">
                     <form class="classic" style="max-width: 650px; margin:auto;" id="application-form" action="form-s.php" method="post" enctype="multipart/form-data">
@@ -187,7 +171,7 @@ try {
                                 </div>
                             </div>
 
-                            <img id="right-first" src="<?=BASE_URL?>/assets/images/1.png" alt="">
+                          
 
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12">

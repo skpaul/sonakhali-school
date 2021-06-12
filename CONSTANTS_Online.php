@@ -14,6 +14,6 @@
     defined("DATABASE_PASSWORD") or define("DATABASE_PASSWORD", "Sonakhali$2021@School");
     defined("DATABASE_NAME") or define("DATABASE_NAME", "zahiskpo_sonakhali");
     defined("ENVIRONMENT") or define("ENVIRONMENT", "PRODUCTION"); //DEVELOPMENT  //PRODUCTION
-    defined("ORGANIZATION_SHORT_NAME") or define("ORGANIZATION_SHORT_NAME", "Uttar Sonakhali School");
-    defined("ORGANIZATION_FULL_NAME") or define("ORGANIZATION_FULL_NAME", "Uttar Sonakhali School");
+    defined("ORGANIZATION_SHORT_NAME") or define("ORGANIZATION_SHORT_NAME", "UTTAR SONAKHALI SCHOOL & COLLEGE");
+    defined("ORGANIZATION_FULL_NAME") or define("ORGANIZATION_FULL_NAME", "UTTAR SONAKHALI SCHOOL & COLLEGE");
 ?>

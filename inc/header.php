@@ -14,7 +14,7 @@
             <li><a href="$homeUrl">Home</a></li>
         HTML;
         
-        $registrationUrl =  BASE_URL . "/reunion-2021/registration/form.php";
+        $registrationUrl =  BASE_URL . "/reunion-2021/registration/intro.php";
         $admitCardUrl =  BASE_URL . "/admit-card/index.php";
       
         $paymentStatusUrl = BASE_URL . "/court-higher/written/payment-status/payment-status.php";
@@ -39,8 +39,8 @@
                                     <img class="logo" src="$logoSrc" alt="Bangladesh Govt. Logo">
                                 </div> -->
                                 <div class="govt-org">
-                                    <div class="govt">ESTD: 1935, P.O: Sonakhali, PS: Amtali, Dist: Barguna</div>
                                     <div class="organization" style="font-size: 25px;">$organizationFullName</div>
+                                    <div class="govt">ESTD: 1935, P.O: Sonakhali, PS: Amtali, Dist: Barguna</div>
                                 </div>
                             </div>         
                         </div>

@@ -1,6 +1,6 @@
 
 <div class="copyright">
-    ©<?php echo date("Y"); ?>, Uttar Sonakhali School, All Rights Reserved.
+    ©<?php echo date("Y"); ?>, <?=ORGANIZATION_FULL_NAME?>, All Rights Reserved.
 </div>
 <div class="powered-by">
     Dev Team:
