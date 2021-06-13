@@ -54,6 +54,7 @@ try {
         <link href="<?= BASE_URL ?>/assets/js/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
         <link href="<?= BASE_URL ?>/assets/js/plugins/jquery-ui/jquery-ui.structure.min.css" rel="stylesheet">
         <link href="<?= BASE_URL ?>/assets/js/plugins/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
+        <link href="css/animation.css" rel="stylesheet">
 
         <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"> -->
@@ -109,6 +110,7 @@ try {
                 color: white;
             }
 
+
           
         </style>
 
@@ -146,14 +148,13 @@ try {
                         <p class="p">
                         The event would be honoured and glorius with your sincere cooperation & spontaneous participation.
                         </p>
-                        <p class="p" style="    font-weight: bold;
-    font-size: 25px;
-    color: #2196f3;">
+                        <p class="p" style="font-weight: bold;">
                         
                         Be There
                         </p>
 
-                        <a class="register-link" href="<?=BASE_URL?>/reunion-2021/registration/form.php">Register Now</a>
+                        <div class="anim">Registration will start soon!!!</div>
+                        <!-- <a class="register-link" href="<?=BASE_URL?>/reunion-2021/registration/form.php">Register Now</a> -->
                     </div>
                 </div>
             </main>

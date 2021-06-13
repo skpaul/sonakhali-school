@@ -88,9 +88,8 @@ $now = $datetime->now()->asYmdHis();
                                     <img class="logo" src="<?= BASE_URL ?>/assets/images/govt-logo.png">
                                 </div> -->
                                 <div class="govt-org">
-                                    <div class="govt">
-                                    ESTD: 1935, P.O: Sonakhali, PS: Amtali, Dist: Barguna</div>
                                     <div class="organization" style="font-size: 25px;"><?= ORGANIZATION_FULL_NAME ?></div>
+                                    <div class="govt">ESTD: 1935, P.O: Sonakhali, PS: Amtali, Dist: Barguna</div>
                                 </div>
                             </div>
                         </div>

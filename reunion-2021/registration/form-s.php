@@ -24,9 +24,9 @@
     try {
        
        
-        $registration->name= $form->label("Name")->httpPost("name")->required()->asString(true)->maxLength(50)->validate();
-        $registration->fatherName= $form->label("Father Name")->httpPost("fatherName")->required()->asString(true)->maxLength(50)->validate();
-        $registration->motherName= $form->label("Mother Name")->httpPost("motherName")->required()->asString(true)->maxLength(50)->validate();
+        $registration->name= strtoupper($form->label("Name")->httpPost("name")->required()->asString(true)->maxLength(50)->validate());
+        $registration->fatherName= strtoupper($form->label("Father Name")->httpPost("fatherName")->required()->asString(true)->maxLength(50)->validate());
+        $registration->motherName= strtoupper($form->label("Mother Name")->httpPost("motherName")->required()->asString(true)->maxLength(50)->validate());
         $registration->gender= $form->label("Gender")->httpPost("gender")->required()->asString(false)->maxLength(10)->validate();
         $dob= $form->label("Date of Birth")->httpPost("dob")->required()->asDate()->validate();
         $registration->dob = $datetime->value($dob)->asYmd();
