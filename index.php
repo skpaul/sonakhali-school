@@ -24,14 +24,14 @@ $year = date("Y");
     <head>
         <title>Home - <?=ORGANIZATION_FULL_NAME?></title>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PHR09TLL18"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PHR09TLL18"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-PHR09TLL18');
-</script>
+        gtag('config', 'G-PHR09TLL18');
+        </script>
 
         <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -41,20 +41,23 @@ $year = date("Y");
         Required::metaTags()->favicon()->teletalkCSS()->sweetModalCSS()->bootstrapGrid();
         ?>
 
+       
+<link href="index1.css" rel="stylesheet">
         <style>
-        .master-wrapper{
-            background-image: url(photo-collage.png);
-    /* background-size: cover; */
-    background-repeat: no-repeat;
-    background-position: center;
+        .master-wrapper {
+            background-image: url(assets/images/5.jpg);
+            background-size: cover;
         }
         </style>
         
     </head>
 
 <body>
-    <!-- <div id="version"></div> -->
+
     <div class="master-wrapper">
+
+   
+
         <header>
             <?php
             require_once(ROOT_DIRECTORY . "/inc/header.php");
@@ -62,11 +65,18 @@ $year = date("Y");
             ?>
         </header>
         <main>
-            <div class="container">
-                <!-- <h2 class="text-center margin-bottom-25">Applicant Login</h2> -->
-               
-            </div>
 
+        <div class="background">
+                    <div class="cube"></div>
+                    <div class="cube"></div>
+                    <div class="cube"></div>
+                    <div class="cube"></div>
+                    <div class="cube"></div>
+                </div>
+                
+            <!-- <div class="container">
+               
+            </div> -->
         </main>
         <footer>
             <?php
@@ -77,17 +87,12 @@ $year = date("Y");
 
 
     <?php
-    Required::jquery()->hamburgerMenu()->sweetModalJS()->swiftSubmit()->swiftNumericInput();
+    Required::jquery()->hamburgerMenu()->sweetModalJS();
     ?>
     <script>
-        var base_url = '<?php echo BASE_URL; ?>';
         $(function() {
 
-            $(".swiftInteger").swiftNumericInput({ allowFloat: false, allowNegative: false });
-
-            $("form").swiftSubmit({
-                redirect: true
-            }, null, null, null, null, null);
+         
         })
     </script>
 
