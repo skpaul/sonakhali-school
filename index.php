@@ -45,8 +45,13 @@ $year = date("Y");
 <link href="index1.css" rel="stylesheet">
         <style>
         .master-wrapper {
-            background-image: url(assets/images/5.jpg);
-            background-size: cover;
+            /* background-image: url(assets/images/5.jpg);
+            background-size: cover; */
+
+            background-image: url(photo-collage.png);
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-position: center;
         }
         </style>
         
@@ -67,11 +72,11 @@ $year = date("Y");
         <main>
 
         <div class="background">
-                    <div class="cube"></div>
-                    <div class="cube"></div>
-                    <div class="cube"></div>
-                    <div class="cube"></div>
-                    <div class="cube"></div>
+                    <div class="cube" style="background-color: red;"></div>
+                    <div class="cube" style="background-color: #B7885E;"></div>
+                    <div class="cube" style="background-color: #C9D8DF;"></div>
+                    <div class="cube" style="background-color: #e4af28;"></div>
+                    <div class="cube" style="background-color: red;"></div>
                 </div>
                 
             <!-- <div class="container">
