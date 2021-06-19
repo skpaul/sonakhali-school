@@ -15,6 +15,7 @@
         HTML;
         
         $registrationUrl =  BASE_URL . "/reunion-2021/registration/intro.php";
+        $applicantCopyUrl =  BASE_URL . "/reunion-2021/registration-copy/index.php";
         $aboutUrl =  BASE_URL . "/about.php";
         $teachersUrl =  BASE_URL . "/teachers.php";
         $adhocUrl =  BASE_URL . "/adhoc.php";
@@ -24,6 +25,7 @@
         $menu .= 
         <<<HTML
             <li><a href="$registrationUrl">Re-union 2021</a></li>
+            <li><a href="$applicantCopyUrl">Registration Copy</a></li>
             <li><a href="$teachersUrl">Teachers & Staffs</a></li>
             <li><a href="$adhocUrl">Adhoc Committee</a></li>
             <li><a href="$aboutUrl">About</a></li>
