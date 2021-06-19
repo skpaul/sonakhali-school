@@ -19,8 +19,6 @@
         $aboutUrl =  BASE_URL . "/about.php";
         $teachersUrl =  BASE_URL . "/teachers.php";
         $adhocUrl =  BASE_URL . "/adhoc.php";
-      
-
         
         $menu .= 
         <<<HTML
