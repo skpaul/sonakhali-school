@@ -77,9 +77,12 @@ $year = date("Y");
         </header>
         <main>
 
-        <marquee direction="left">
-        Registration for re-union-2021 will be continued upto 31st July, 2021
-</marquee>
+        <marquee direction="left" onmouseover="this.stop();"
+           onmouseout="this.start();">
+        Registration for re-union-2021 will be continued upto 31st July, 2021. 
+        
+        <a href="<?=BASE_URL?>/reunion-2021/registration/intro.php">Register Now</a>
+        </marquee>
         <div class="background">
                     <div class="cube" style="background-color: red;"></div>
                     <div class="cube" style="background-color: #B7885E;"></div>

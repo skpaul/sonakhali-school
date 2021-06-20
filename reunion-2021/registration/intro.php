@@ -101,13 +101,14 @@ try {
                 border: 1px solid gray;
                 border-radius: 23px;
                 padding: 6px;
-                color: gray;
+                background-color: red;
+                color: white;
 
             }
 
             .register-link:hover{
-                background-color: black;
-                color: white;
+                background-color: white;
+                color: red;
             }
 
 
