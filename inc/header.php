@@ -22,7 +22,7 @@
         
         $menu .= 
         <<<HTML
-            <li><a href="$registrationUrl">Re-union 2021</a></li>
+            <li><a style="color: red;" href="$registrationUrl">Re-union 2021</a></li>
             <li><a href="$applicantCopyUrl">Registration Copy</a></li>
             <li><a href="$teachersUrl">Teachers & Staffs</a></li>
             <li><a href="$adhocUrl">Adhoc Committee</a></li>

@@ -53,7 +53,13 @@ $year = date("Y");
     background-repeat: no-repeat;
     background-position: center;
         }
+
+        marquee{
+            font-size: 23px;
+            color: red;
+        }
         </style>
+        
         
     </head>
 
@@ -71,6 +77,9 @@ $year = date("Y");
         </header>
         <main>
 
+        <marquee direction="left">
+        Registration for re-union-2021 will be continued upto 31st July, 2021
+</marquee>
         <div class="background">
                     <div class="cube" style="background-color: red;"></div>
                     <div class="cube" style="background-color: #B7885E;"></div>

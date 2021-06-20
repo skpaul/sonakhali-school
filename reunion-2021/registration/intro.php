@@ -153,8 +153,8 @@ try {
                         Be There
                         </p>
 
-                        <div class="anim">Registration will start soon!!!</div>
-                        <!-- <a class="register-link" href="<?=BASE_URL?>/reunion-2021/registration/form.php">Register Now</a> -->
+                        <!-- <div class="anim">Registration will start soon!!!</div> -->
+                        <a class="register-link" href="<?=BASE_URL?>/reunion-2021/registration/form.php">Register Now</a>
                     </div>
                 </div>
             </main>
